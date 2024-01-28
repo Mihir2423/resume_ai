@@ -4,7 +4,6 @@ export function middleware(req) {
   const path = req.nextUrl.pathname;
 
   const token = req.cookies.get("token")?.value || "";
-  console.log(token, "token");
   // Public paths
   const isPublicPath =
     path.startsWith("/sign-in") || path.startsWith("/sign-up");

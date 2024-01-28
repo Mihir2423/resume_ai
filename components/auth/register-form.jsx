@@ -13,8 +13,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const RegisterForm = () => {
+  const router = useRouter();
   const form = useForm({
     defaultValues: {
       email: "",
@@ -22,8 +25,15 @@ const RegisterForm = () => {
     },
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     console.log(values);
+    try {
+      const res = await axios.post("/api/register", values);
+      router.push("/sign-in");
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <CardWrapper
