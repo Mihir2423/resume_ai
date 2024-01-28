@@ -17,7 +17,6 @@ const getUserHistory = async (id) => {
 
 const History = async ({ params }) => {
   const history = await getUserHistory(params.id);
-  console.log(history);
   return (
     <div className="min-h-screen py-32 md:p-24 md:pt-32 flex justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-500 to-zinc-900">
       <div className="md:w-[60vw] w-full max-md:px-4">
