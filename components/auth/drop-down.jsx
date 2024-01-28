@@ -11,15 +11,31 @@ import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { useLocalStorage } from "@/utils/use-storage";
 import { User } from "lucide-react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const DropDownMenu = () => {
+  const router = useRouter();
   const userDetails = useLocalStorage("userDetails");
+  const handleSignOut = async () => {
+    try {
+      const res = await axios.post("/api/logout");
+      if (res.status === 200) {
+        router.replace("/login");
+        localStorage.clear();
+      } else {
+        console.error("Logout failed:", response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="flex items-center justify-center">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button className="bg-blue-400 p-3 rounded-full flex items-center">
-          <User />
+            <User />
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
@@ -45,7 +61,10 @@ const DropDownMenu = () => {
             </DropdownMenuItem>
           </Link>
           <DropdownMenuSeparator />
-          <DropdownMenuItem className="font-semibold cursor-pointer">
+          <DropdownMenuItem
+            className="font-semibold cursor-pointer"
+            onClick={handleSignOut}
+          >
             <LogOut className="w-4 h-4 mr-2" />
             Sign out
           </DropdownMenuItem>
