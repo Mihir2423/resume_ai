@@ -87,6 +87,12 @@
   position: relative;
 }
 
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .resume .icon i,
 .resume .resume_right .resume_hobby ul li i {
   position: absolute;

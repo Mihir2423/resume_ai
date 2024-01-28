@@ -14,7 +14,6 @@ const getResumeData = async (id) => {
 
 const ViewResume = async ({ params }) => {
   const resumeData = await getResumeData(params.id);
-  console.log(resumeData);
   return (
     <div className="py-16">
       <Template resumeData={resumeData} />;

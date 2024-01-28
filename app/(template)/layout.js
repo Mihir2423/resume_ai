@@ -2,7 +2,7 @@ import React from "react";
 
 const TemplateLayout = ({ children }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-500 to-zinc-900">
+    <div className="min-h-screen overflow-x-scroll flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-500 to-zinc-900">
       {children}
     </div>
   );

@@ -21,7 +21,7 @@ const History = async ({ params }) => {
     <div className="min-h-screen py-32 md:p-24 md:pt-32 flex justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-500 to-zinc-900">
       <div className="md:w-[60vw] w-full max-md:px-4">
         <Table className="p-3 rounded-md overflow-hidden w-full">
-          <TableHeader className="bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 to-zinc-400">
+          <TableHeader className="bg-gradient-to-r from-zinc-50 to-zinc-400">
             {tableHead?.map((item, i) => (
               <TableHead
                 className="py-4 px-4 text-black text-xl font-[500] capitalize text-center"

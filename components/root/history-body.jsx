@@ -18,7 +18,7 @@ const HistoryBody = ({ history }) => {
         history.map((item) => (
           <TableRow
             key={item._id}
-            className="text-white bg-gradient-to-b md:bg-gradient-to-r from-black to-blue-400 hover:bg-black"
+            className="text-white bg-gradient-to-r from-black to-blue-400 hover:bg-black"
           >
             <TableCell className="text-center select-none">
               {item?.role}

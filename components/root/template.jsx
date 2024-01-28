@@ -2,22 +2,23 @@
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import {
+  ArrowDownToLine,
+  FileVideo2,
+  Github,
+  Home,
+  Linkedin,
+  Mail,
+  Map,
+  Smartphone,
+} from "lucide-react";
 import Image from "next/image";
-import React from "react";
-import "./template.css";
-import { Map } from "lucide-react";
-import { Smartphone } from "lucide-react";
-import { Mail } from "lucide-react";
-import { FileVideo2 } from "lucide-react";
-import { Facebook } from "lucide-react";
-import { Twitter } from "lucide-react";
-import { Linkedin } from "lucide-react";
-import { ArrowDownToLine } from "lucide-react";
-import { Home } from "lucide-react";
 import { useRouter } from "next/navigation";
+import "./template.css";
 
-const Template = () => {
+const Template = ({ resumeData }) => {
   const router = useRouter();
+  console.log(resumeData);
   const printDocument = () => {
     const input = document.getElementById("resume");
     html2canvas(input).then((canvas) => {
@@ -46,9 +47,10 @@ const Template = () => {
           <div className="resume_content">
             <div className="resume_item resume_info">
               <div className="title">
-                <p className="bold">Mihir Aman Raj</p>
+                <p className="bold">{resumeData?.name}</p>
                 <p className="regular">
-                  Role, Age <br /> Gender
+                  {resumeData?.role} {resumeData?.age} <br />{" "}
+                  {resumeData?.gender}
                 </p>
               </div>
               <ul>
@@ -56,25 +58,25 @@ const Template = () => {
                   <div className="icon">
                     <Map />
                   </div>
-                  <div className="data">Address</div>
+                  <div className="data">{resumeData?.address}</div>
                 </li>
                 <li>
                   <div className="icon">
                     <Smartphone />
                   </div>
-                  <div className="data">PhoneNum</div>
+                  <div className="data">{resumeData?.phone}</div>
                 </li>
                 <li>
                   <div className="icon">
                     <Mail />
                   </div>
-                  <div className="data">Email</div>
+                  <div className="data">{resumeData?.email}</div>
                 </li>
                 <li>
                   <div className="icon">
                     <FileVideo2 />
                   </div>
-                  <div className="data">Skype</div>
+                  <div className="data">{resumeData?.skype}</div>
                 </li>
               </ul>
             </div>
@@ -83,41 +85,11 @@ const Template = () => {
                 <p className="bold">{"skill's"}</p>
               </div>
               <ul>
-                <li>
-                  <div className="skill_name">HTML</div>
-                  <div className="skill_progress">
-                    <span style={{ width: "80%" }} />
-                  </div>
-                  <div className="skill_per">80%</div>
-                </li>
-                <li>
-                  <div className="skill_name">CSS</div>
-                  <div className="skill_progress">
-                    <span style={{ width: "70%" }} />
-                  </div>
-                  <div className="skill_per">70%</div>
-                </li>
-                <li>
-                  <div className="skill_name">SASS</div>
-                  <div className="skill_progress">
-                    <span style={{ width: "90%" }} />
-                  </div>
-                  <div className="skill_per">90%</div>
-                </li>
-                <li>
-                  <div className="skill_name">JS</div>
-                  <div className="skill_progress">
-                    <span style={{ width: "60%" }} />
-                  </div>
-                  <div className="skill_per">60%</div>
-                </li>
-                <li>
-                  <div className="skill_name">JQUERY</div>
-                  <div className="skill_progress">
-                    <span style={{ width: "88%" }} />
-                  </div>
-                  <div className="skill_per">88%</div>
-                </li>
+                {resumeData?.skills?.map((item) => (
+                  <li key={item?._id}>
+                    <div className="w-full">- {item?.skill}</div>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="resume_item resume_social">
@@ -127,38 +99,20 @@ const Template = () => {
               <ul>
                 <li>
                   <div className="icon">
-                    <Facebook />
-                  </div>
-                  <div className="data">
-                    <p className="semi-bold">Facebook</p>
-                    <p>mihir@facebook</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="icon">
-                    <Twitter />
-                  </div>
-                  <div className="data">
-                    <p className="semi-bold">Twitter</p>
-                    <p>mihir@twitter</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="icon">
-                    <i className="fab fa-youtube" />
-                  </div>
-                  <div className="data">
-                    <p className="semi-bold">Youtube</p>
-                    <p>mihir@youtube</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="icon">
                     <Linkedin />
                   </div>
                   <div className="data">
                     <p className="semi-bold">Linkedin</p>
-                    <p>mihir@linkedin</p>
+                    <p>@{resumeData?.linkedin?.split("/")?.[4]}</p>
+                  </div>
+                </li>
+                <li>
+                  <div className="icon">
+                    <Github className="w-6 h-6" />
+                  </div>
+                  <div className="data">
+                    <p className="semi-bold">Github</p>
+                    <p>@{resumeData?.github?.split("/")?.[3]}</p>
                   </div>
                 </li>
               </ul>
@@ -170,47 +124,27 @@ const Template = () => {
             <div className="title">
               <p className="bold">About us</p>
             </div>
-            <p>About</p>
+            <p>{resumeData?.about_me}</p>
           </div>
           <div className="resume_item resume_work">
             <div className="title">
               <p className="bold">Work Experience</p>
             </div>
             <ul>
-              <li>
-                <div className="date">Duration</div>
-                <div className="info">
-                  <p className="semi-bold">
-                    AgencyName
-                    <br /> Role
-                  </p>
-                  <p>About Job</p>
-                </div>
-              </li>
-              {true && (
-                <li>
-                  <div className="date">Duration</div>
+              {resumeData?.experience?.map((item, i) => (
+                <li key={i}>
+                  <div className="date">
+                    {item?.start_year} - {item?.end_year}
+                  </div>
                   <div className="info">
                     <p className="semi-bold">
-                      AgencyName
-                      <br /> Role
+                      {item?.company}
+                      <br /> {item?.position}
                     </p>
-                    <p>About Job</p>
+                    <p>{item?.description}</p>
                   </div>
                 </li>
-              )}
-              {true && (
-                <li>
-                  <div className="date">Duration</div>
-                  <div className="info">
-                    <p className="semi-bold">
-                      AgencyName
-                      <br /> Role
-                    </p>
-                    <p>About Job</p>
-                  </div>
-                </li>
-              )}
+              ))}
             </ul>
           </div>
           <div className="resume_item resume_education">
@@ -218,44 +152,22 @@ const Template = () => {
               <p className="bold">Education</p>
             </div>
             <ul>
-              <li>
-                <div className="date">Something</div>
-                <div className="info">
-                  <p className="semi-bold">AgencyName ( UniversitySchool)</p>
-                  <p>ABout Job</p>
-                </div>
-              </li>
-              {true && (
-                <li>
-                  <div className="date">Something</div>
+              {resumeData?.education?.map((item, i) => (
+                <li key={i}>
+                  <div className="date">{item?.start_year} - {item?.end_year}</div>
                   <div className="info">
-                    <p className="semi-bold">AgencyName ( UniversitySchool)</p>
-                    <p>ABout Job</p>
+                    <p className="semi-bold">{item?.school} ( {item?.field_of_study} )</p>
+                    <p>{item?.description}</p>
                   </div>
                 </li>
-              )}
-              {true && (
-                <li>
-                  <div className="date">Something</div>
-                  <div className="info">
-                    <p className="semi-bold">AgencyName ( UniversitySchool)</p>
-                    <p>About Job</p>
-                  </div>
-                </li>
-              )}
+              ))}
             </ul>
           </div>
         </div>
       </div>
       <div className="fixed bottom-5 right-10 flex items-center gap-4">
-        <ArrowDownToLine
-          onClick={printDocument}
-          className="text-white"
-        />
-        <Home
-          onClick={() => router.push("/")}
-          className="text-white"
-        />
+        <ArrowDownToLine onClick={printDocument} className="text-white" />
+        <Home onClick={() => router.push("/")} className="text-white" />
       </div>
     </>
   );
