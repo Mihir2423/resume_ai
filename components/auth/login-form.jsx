@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import axios from "axios"; 
+import axios from "axios";
 import { CardWrapper } from "./card-wrapper";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -30,9 +30,10 @@ const LoginForm = () => {
     try {
       const res = await axios.post("/api/login", values);
       router.push("/");
-      console.log(res.data);
+      localStorage.setItem("userDetails", JSON.stringify(res.data.data));
     } catch (error) {
       console.log(error);
+    } finally {
     }
   };
   return (
