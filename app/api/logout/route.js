@@ -4,10 +4,10 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    await connectDb();
+    await connectDb()
     const cookieStore = cookies();
     cookieStore.set("token", "");
-    return NextResponse.redirect("/");
+    return NextResponse.redirect("http://localhost:3000/sign-in");
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   } finally {

@@ -54,7 +54,7 @@ const DropDownMenu = () => {
             </div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <Link href="/history">
+          <Link href={`/history/${userDetails?._id}`}>
             <DropdownMenuItem>
               <ArchiveIcon className="w-4 h-4 mr-2" />
               History

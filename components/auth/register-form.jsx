@@ -89,7 +89,7 @@ const RegisterForm = () => {
               )}
             />
           </div>
-          <Button type="submit" className="w-full">
+          <Button type="submit" variant="custom" className="w-full">
             Create an account
           </Button>
         </form>

@@ -42,6 +42,7 @@ const resumeSchema = new Schema({
       skill: { type: String },
     },
   ],
+  created_at: { type: Date, default: Date.now },
 });
 
 const Resume = mongoose.models.Resume || mongoose.model("Resume", resumeSchema);
