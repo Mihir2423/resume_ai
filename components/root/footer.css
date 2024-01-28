@@ -1,0 +1,102 @@
+.outer-container {
+    background-color: var(--white);
+}
+.footer-container {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 150px;
+}
+.news-letter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px 5px;
+    padding: 10px;
+}
+.news-letter .letter-title {
+    font-size: 2rem;
+    color: var(--dark);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.news-letter .letter-description {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.news-letter .form-group {
+    display: flex;
+    justify-content: center;
+    margin: 5px 10px;
+}
+.news-letter .form-group input {
+    padding: 10px 15px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    border: 1px solid var(--light);
+    width: 450px;
+    font-size: 1rem;
+}
+.news-letter .form-group input:focus {
+    border: 1px solid var(--primary);
+}
+.news-letter .form-group button {
+    padding: 10px 15px;
+    border: none;
+    font-size: 1rem;
+    background-color: var(--primary);
+    border-radius: 0 5px 5px 0;
+    color: var(--white);
+    cursor: pointer;
+}
+.news-letter .social-block {
+    font-size: 1.3rem;
+    margin: 20px 0;
+}
+.news-letter .social-block i {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    background-color: #ddd;
+    margin: 10px 5px;
+    vertical-align: center;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.news-letter .social-block i:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+.footer-end {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid var(--dark);
+    padding: 10px;
+    color: #444;
+    font-size: 15px;
+}
+.footer-end i {
+    vertical-align: middle;
+}
+@media (max-width: 1100px) {
+    .footer-container {
+        margin: 0 30px;
+   }
+}
+@media (max-width: 600px) {
+    .footer-container {
+        margin: 0 25px;
+   }
+    .news-letter .form-group input {
+        width: 180px !important;
+        padding: 10px;
+   }
+    .news-letter .form-group button {
+        padding: 10px;
+   }
+}
