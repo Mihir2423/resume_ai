@@ -26,7 +26,7 @@ export async function POST(req) {
       return NextResponse.json({ error: "Invalid Password" }, { status: 401 });
     }
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: user._id, username: user.name, role: user.role },
       process.env.NEXT_PUBLIC_JWT_SECRET,
       {
         expiresIn: "7d",

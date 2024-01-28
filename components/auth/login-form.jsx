@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import axios from "axios"; 
 import { CardWrapper } from "./card-wrapper";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -22,8 +23,14 @@ const LoginForm = () => {
     },
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     console.log(values);
+    try {
+      const res = await axios.post("/api/login", values);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <CardWrapper
