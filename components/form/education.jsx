@@ -87,7 +87,7 @@ const Education = ({ setEducationList, setEducation, education }) => {
         variant="secondary"
         type="button"
         onClick={() => {
-          setEducationList((prev) => [...prev, { education }]);
+          setEducationList((prev) => [...prev, { ...education }]);
           setEducation({
             school: "",
             degree: "",

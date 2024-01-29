@@ -8,6 +8,7 @@ import UserDetail from "@/components/form/user-detail";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useLocalStorage } from "@/utils/use-storage";
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -68,20 +69,28 @@ const FormPage = () => {
       github: "",
       about_me: "",
       skills: [
-        {
-          skill: "",
-        },
+        { skill: "UI/UX Design" },
+        { skill: "React" },
+        { skill: "Node" },
+        { skill: "MongoDB" },
+        { skill: "Express" },
       ],
     },
   });
 
   const onSubmit = async (values) => {
-    console.log({
+    const data = {
       ...values,
       user_id: id,
       experience: experienceList,
       education: educationList,
-    });
+    };
+    try {
+      const res = await axios.post("/api/resume", data);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

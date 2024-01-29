@@ -72,7 +72,7 @@ const Experience = ({ setExperienceList, setExperience, experience }) => {
         variant="secondary"
         type="button"
         onClick={() => {
-          setExperienceList((prev) => [...prev, { experience }]);
+          setExperienceList((prev) => [...prev, { ...experience }]);
           setExperience({
             company: "",
             position: "",
