@@ -8,10 +8,9 @@ import DropDownMenu from "../auth/drop-down";
 
 const navLinks = [
   { id: 1, text: "HOME" },
+  { id: 2, text: "INTRO" },
   { id: 2, text: "ABOUT US" },
-  { id: 3, text: "PRICING" },
-  { id: 4, text: "TEMPLATES" },
-  { id: 5, text: "CONTACT" },
+  { id: 3, text: "CONTACT" },
 ];
 
 const Nav = () => {
@@ -19,7 +18,7 @@ const Nav = () => {
   const isLoggedIn = true;
   return (
     <nav className="fixed top-0 left-0 right-0 bg-blue-100 max-md:pl-3 md:px-6 py-3 flex flex-row z-10">
-      <div className="flex items-center">
+      <div className="flex items-center" onClick={() => router.push("/")}>
         <Image
           src="/assets/cv.png"
           alt="Logo"
@@ -32,7 +31,7 @@ const Nav = () => {
         </span>
       </div>
       <div className="">
-        <ul className="hidden md:flex space-x-20 mt-2 ml-40">
+        <ul className="hidden md:flex items-center space-x-20 mt-3 ml-40">
           {navLinks.map((link) => (
             <li key={link.id} className="hover:text-blue-500 cursor-pointer">
               {link.text}
