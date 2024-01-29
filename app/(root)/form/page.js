@@ -1,7 +1,9 @@
 "use client";
 
 import AboutDetail from "@/components/form/about";
+import Education from "@/components/form/education";
 import Experience from "@/components/form/experience";
+import Final from "@/components/form/final";
 import UserDetail from "@/components/form/user-detail";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -49,6 +51,7 @@ const FormPage = () => {
     end_year: "",
     description: "",
   });
+  const [educationList, setEducationList] = React.useState([]);
   const userDetails = useLocalStorage("userDetails");
   const id = userDetails?._id;
   const form = useForm({
@@ -64,7 +67,6 @@ const FormPage = () => {
       linkedin: "",
       github: "",
       about_me: "",
-      education: education,
       skills: [
         {
           skill: "",
@@ -74,7 +76,12 @@ const FormPage = () => {
   });
 
   const onSubmit = async (values) => {
-    console.log({ ...values, user_id: id, experience: experienceList });
+    console.log({
+      ...values,
+      user_id: id,
+      experience: experienceList,
+      education: educationList,
+    });
   };
 
   return (
@@ -106,8 +113,14 @@ const FormPage = () => {
                   experience={experience}
                 />
               )}
-              {activeTab === 3 && <UserDetail form={form} />}
-              {activeTab === 4 && <UserDetail form={form} />}
+              {activeTab === 3 && (
+                <Education
+                  education={education}
+                  setEducation={setEducation}
+                  setEducationList={setEducationList}
+                />
+              )}
+              {activeTab === 4 && <Final />}
               {activeTab === 4 ? (
                 <Button type="submit" variant="custom" className="w-full">
                   Submit
