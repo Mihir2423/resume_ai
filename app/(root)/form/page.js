@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useLocalStorage } from "@/utils/use-storage";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -78,6 +79,7 @@ const FormPage = () => {
     },
   });
 
+  const router = useRouter();
   const onSubmit = async (values) => {
     const data = {
       ...values,
@@ -88,6 +90,7 @@ const FormPage = () => {
     try {
       const res = await axios.post("/api/resume", data);
       console.log(res.data);
+      router.push("/")
     } catch (error) {
       console.log(error);
     }

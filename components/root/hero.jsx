@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import "./hero.css"
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import "./hero.css";
 
 const Hero = () => {
   return (
@@ -23,15 +23,30 @@ const Hero = () => {
           Choose from several templates and follow easy prompts to create the
           perfect job-ready resume.
         </p>
-        <div className="flex md:flex-row gap-3 md:space-y-0 md:space-x-4 mt-4 md:mt-6 text-sm text-white">
-          <Link href="/form" className='create-btn'>GENERATE</Link>
+        <div className="flex items-center gap-6">
+          <div className="flex md:flex-row gap-3 md:space-y-0 md:space-x-4 mt-4 md:mt-6 text-sm text-white">
+            <Link href="/form" className="create-btn">
+              GENERATE
+            </Link>
+          </div>
+          <div className="flex md:flex-row gap-3 md:space-y-0 md:space-x-4 mt-4 md:mt-6 text-sm text-white">
+            <Link href="/ai" className="create-btn">
+              AI GENERATE
+            </Link>
+          </div>
         </div>
       </div>
       <div className="mt-8 md:mt-32 md:ml-24 md:p-20 max-md:shadow-2xl max-md:shadow-blue-500">
-        <Image src="/assets/banner.png" alt="home-banner" width={500} height={500} className="w-full md:w-[1100px] h-[350px] object-cover" />
+        <Image
+          src="/assets/banner.png"
+          alt="home-banner"
+          width={500}
+          height={500}
+          className="w-full md:w-[1100px] h-[350px] object-cover"
+        />
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

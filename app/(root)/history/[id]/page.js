@@ -1,6 +1,6 @@
 import HistoryBody from "@/components/root/history-body";
 import { Table, TableHead, TableHeader } from "@/components/ui/table";
-import { unstable_noStore } from "next/cache";
+import { revalidatePath, unstable_noStore } from "next/cache";
 import React from "react";
 
 const tableHead = ["Role", "Date", "View"];
@@ -13,6 +13,7 @@ const getUserHistory = async (id) => {
       "Cache-Control": "no-cache",
     },
   });
+  revalidatePath(`/history/${id}`);
   if (result.ok) {
     const { data } = await result.json();
     return data;
